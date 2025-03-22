@@ -33,6 +33,7 @@ align-items: center;
 height: 55px;
 border-radius: 10px;
 margin: 0;
+z-index: 2;
 }
 nav div {
 display: flex;
@@ -112,6 +113,7 @@ padding: 2px 0px 2px 5px;
 padding-left: max(25px, 5%);
 color: rgb(200, 200, 200);
 font-weight: 600;
+z-index: 2;
 }
 main input[id="searchbar"]:hover {
 background-color: rgba(220, 20, 10, 0.6);
@@ -152,6 +154,7 @@ flex-direction: column;
 align-items: center;
 transition: 0.25s ease;
 transition-property: background-color, transform;
+z-index: 0;
 }
 .product-div:hover {
 background-color: rgba(220, 45, 25, 0.3);
@@ -175,8 +178,8 @@ display: block;
 font-size: 16px;
 }
 .product-info-div {
-background-color: rgba(220, 20, 20, 0.25);
-flex: 1;
+background-image: linear-gradient(90deg, rgba(220, 20, 20, 0.2), transparent);
+width: clamp(170px, 65dvw, 600px);
 height: max-content;
 padding: 15px;
 display: inline-block;
@@ -185,22 +188,23 @@ border-radius: 0 10px 10px 0;
 overflow-wrap: break-word;
 }
 .product-img-div {
-background-color: rgba(220, 20, 20, 0.25);
-flex: 1;
+background-color: rgba(220, 20, 20, 0.3);
 padding: 15px;
 display: inline-block;
 height: max-content;
 vertical-align: top;
 border-radius: 10px 0 0 10px;
-margin-right: -5px;
+margin-right: -15px;
 }
 .product-img-div img {
 border-radius: 10px;
+width: clamp(140px, 35dvw, 200px);
 }
 .outer-product-divs {
 display: flex;
 flex-direction: row;
-
+align-items: center;
+width: 100%;
 }
 footer {
 background: linear-gradient(90deg, rgb(150, 10, 0), rgb(125, 30, 15));
@@ -217,8 +221,8 @@ text-shadow: 2px 2px 3px firebrick;
 </head>
 <body>
 <nav>
-<img src="athlomax-logo.png" title="Athlomax" width="80">
-<img src="athlomax-text.png" title="Athlomax" style="margin-left: -15px;" width="150">
+<img class="athlomax-logo athlomax" src="athlomax-logo.png" title="Athlomax" width="80">
+<img class="athlomax-text athlomax" src="athlomax-text.png" title="Athlomax" style="margin-left: -15px;" width="150">
 <div>
 <a class="nav-a-1" title="About Us" href="about.html"><img src="https://img.icons8.com/?size=100&id=GXMx5wI90Hjb&format=png&color=FFFFFF" width="40"></a>
 <a class="nav-a-2" title="Help" href="help.html"><img src="https://img.icons8.com/?size=100&id=42218&format=png&color=FFFFFF" width="33"></a>
@@ -243,7 +247,6 @@ const products = [{
 name: "AthloDesign",
 image: "images/483210294_530504720067602_1267678354428444878_n.jpg",
 price: 0,
-imgwidth: 150,
 num: "483210294",
 id: 0
 }, 
@@ -251,7 +254,6 @@ id: 0
 name: "AthloShirt Gym",
 image: "images/484645970_656162760140019_4863241769886277797_n.jpg",
 price: 0,
-imgwidth: 150,
 num: "484645970",
 id: 1
 }, 
@@ -259,7 +261,6 @@ id: 1
 name: "AthloShirt Gym 2",
 image: "images/485083676_1154774316058295_3694708223774807993_n.jpg",
 price: 0,
-imgwidth: 150,
 num: "485083676",
 id: 2
 }, 
@@ -267,7 +268,6 @@ id: 2
 name: "AthloShirt Long Sleeve",
 image: "images/485084005_569791046072900_266735124908277187_n.jpg",
 price: 0,
-imgwidth: 120,
 num: "485084005",
 id: 3
 }, 
@@ -275,7 +275,6 @@ id: 3
 name: "AthloShorts",
 image: "images/483251207_990512373176848_1480826969038943362_n.jpg",
 price: 0,
-imgwidth: 150,
 num: "483251207",
 id: 4
 }, 
@@ -283,7 +282,6 @@ id: 4
 name: "AthloMax Lower Set",
 image: "images/e952fe65-5586-4e6b-a10c-ec09a8da7fe8.png",
 price: 0,
-imgwidth: 130,
 num: "484312722",
 id: 5
 }, 
@@ -291,7 +289,6 @@ id: 5
 name: "AthloShoes",
 image: "images/483227845_898050212334102_3877325485259230548_n.jpg",
 price: 0,
-imgwidth: 150,
 num: "483227845",
 id: 6
 }];
@@ -313,8 +310,8 @@ window.location.href += '?id=' + products[index].id;
 });
 });
 
-if (window.location.search.includes("?id=")) {
-document.title = 'Athlomax - ' + products[window.location.search.split('?id=')[1]].name;
+if (window.location.search.includes("id=")) {
+document.title = 'Athlomax - ' + products[window.location.search.split('id=')[1]].name;
 document.querySelector("main").innerHTML = `
 <form>
 <input name="searchvalue" placeholder="Search here..." id="searchbar" type="text">
@@ -323,13 +320,13 @@ document.querySelector("main").innerHTML = `
 <div class="outer-product-divs">
 <div class="product-img-div">
 <center>
-<img src="${products[window.location.search.split('?id=')[1]].image}" width="${products[window.location.search.split("?id=")[1]].imgwidth}">
+<img src="${products[window.location.search.split('id=')[1]].image}" width="${products[window.location.search.split('id=')[1]].imgwidth}">
 </center>
 </div>
 <div class="product-info-div">
-<h2 style="margin: 10px 0 10px; color: whitesmoke;">${products[window.location.search.split("?id=")[1]].name}</h2>
-<span style="display: block; font-size: 20px;">${products[window.location.search.split("?id=")[1]].price}€</span>
-<span style="display: block; font-size: 14px;">Product ID: ${products[window.location.search.split("?id=")[1]].num}</span>
+<h2 style="margin: 10px 0 10px; color: whitesmoke; font-size: clamp(18px, 6dvw, 40px);">${products[window.location.search.split("id=")[1]].name}</h2>
+<span style="display: block; font-size: clamp(14px, 3.75dvw, 30px); font-weight: 500;">${products[window.location.search.split("id=")[1]].price}€</span>
+<span style="display: block; font-size: clamp(12px, 3.5dvw, 26px);">Product ID: ${products[window.location.search.split("id=")[1]].num}</span>
 </div>
 </div>
 `;
