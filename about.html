@@ -235,6 +235,9 @@ main {display: flex;}
 0% {background-position: left;}
 100% {background-position: right;}
 }
+.athlomax {
+cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -279,10 +282,10 @@ nicknames.forEach((name, index) => {
 index++;
 console.log(index);
 if (index == 1) {
-document.querySelector(".names-div").innerHTML += `<span style="display: block; width: max-content; font-size: 30px; padding: 2px 4px 2px 4px; background: linear-gradient(90deg, rgb(150, 20, 150) 15%, lime 60%, rgb(150, 20, 150) 0%); background-size: 550%; animation: text-animate-left-right 2s linear infinite; background-clip: text; color: transparent; text-shadow: 2px 2px 6px purple, -2px -2px 6px lime;">${name}</span>`;
+document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: 30px; padding: 2px 4px 2px 4px; background: linear-gradient(90deg, rgb(150, 20, 150) 15%, lime 60%, rgb(150, 20, 150) 0%); background-size: 550%; animation: text-animate-left-right 2s linear infinite; background-clip: text; color: transparent; text-shadow: 2px 2px 6px purple, -2px -2px 6px lime;">${name}</label>`;
 return;
 }
-document.querySelector(".names-div").innerHTML += `<span style="display: block; width: max-content; font-size: 30px;">${name}</span>`;
+document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: 30px;">${name}</label>`;
 });
 </script>
 </body>
