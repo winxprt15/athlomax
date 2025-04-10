@@ -227,7 +227,7 @@ padding: 15px 20px 15px 20px;
 border-radius: 11%;
 }
 .text-part {
-width: 100%;
+flex: 1;
 background: linear-gradient(90deg, transparent, rgba(100, 15, 15, 0.75));
 }
 main {display: flex;}
@@ -253,7 +253,7 @@ cursor: pointer;
 <div class="outer-names-div">
 <center>
 <div class="names-div">
-<h2 style="text-align: left; width: calc(100% - 60px); margin: 10px 0px 10px 0px;">Names: </h2>
+<h2 style="text-align: left; width: calc(100% - 2.5vw); margin: 10px 0px 10px 0px;">Names: </h2>
 </div>
 </center>
 </div>
@@ -277,7 +277,7 @@ const nicknames = [
 "Tsop",
 "Tsav",
 "Kuria"
-]
+];
 nicknames.forEach((name, index) => {
 index++;
 console.log(index);
