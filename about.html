@@ -220,8 +220,8 @@ text-shadow: 2px 2px 3px firebrick;
 }
 /* -------- */
 .outer-names-div {
-width: 14%;
-height: 60%;
+width: clamp(80px, 15%, 115px);
+height: 69%;
 background: linear-gradient(90deg, rgba(100, 15, 15, 0.5), transparent);
 padding: 15px 20px 15px 20px;
 border-radius: 11%;
@@ -229,11 +229,26 @@ border-radius: 11%;
 .text-part {
 flex: 1;
 background: linear-gradient(90deg, transparent, rgba(100, 15, 15, 0.75));
+padding-left: clamp(8px, 5%, 20px);
 }
 main {display: flex;}
 @keyframes text-animate-left-right {
 0% {background-position: left;}
 100% {background-position: right;}
+}
+@keyframes text-shadows-animate {
+0% {text-shadow: 2px 2px 6px yellow, -2px -2px 6px blue;}
+25% {text-shadow: 0px 0px 6px yellow, 0px -1px 6px blue;}
+50% {text-shadow: 3px 2px 6px yellow, -1px -3px 6px blue;}
+75% {text-shadow: 1px 0px 6px yellow, -3px 0px 6px blue;}
+100% {text-shadow: 2px 3px 6px yellow, -2px -2px 6px blue;}
+}
+@keyframes translate-animate {
+0% {transform: translate(-2px, 2px);}
+25% {transform: translate(1px, 1px);}
+50% {transform: translate(-1px, 0px);}
+75% {transform: translate(0px, 2px);}
+100% {transform: translate(-2px, 2px);}
 }
 .athlomax {
 cursor: pointer;
@@ -282,10 +297,14 @@ nicknames.forEach((name, index) => {
 index++;
 console.log(index);
 if (index == 1) {
-document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: 30px; padding: 2px 4px 2px 4px; background: linear-gradient(90deg, rgb(150, 20, 150) 15%, lime 60%, rgb(150, 20, 150) 0%); background-size: 550%; animation: text-animate-left-right 2s linear infinite; background-clip: text; color: transparent; text-shadow: 2px 2px 6px purple, -2px -2px 6px lime;">${name}</label>`;
+document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: clamp(15px, 3vw, 23px); padding: 2px 4px 2px 4px; background: linear-gradient(90deg, rgb(150, 20, 150) 15%, lime 60%, rgb(150, 20, 150) 0%); background-size: 550%; animation: text-animate-left-right 2s linear infinite; background-clip: text; color: transparent; text-shadow: 2px 2px 6px purple, -2px -2px 6px lime;">${name}</label>`;
 return;
 }
-document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: 30px;">${name}</label>`;
+if (index == 2) {
+document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: clamp(15px, 3vw, 23px); padding: 2px 4px 2px 4px; background: linear-gradient(90deg, yellow 15%, blue 60%, yellow 0%); background-size: 550%; animation: text-animate-left-right 2s linear infinite 0.1s, text-shadows-animate 1.2s linear infinite, translate-animate 1s linear infinite; background-clip: text; color: transparent; text-shadow: 2px 2px 6px yellow, -2px -2px 6px blue;"><img src="https://yt3.ggpht.com/QYjzY8r2AUzZ5Vrw2FyYmlTG-PL4xGp7nc8tHBcecJKZajd4KqHHPRGj0m6-9tMVvomLNbpIU90=s176-c-k-c0x00ffffff-no-rj-mo" style="width: clamp(14px, 0.85vw, 18px); margin-right: 10px; border-radius: 50%; border: groove white 4px; vertical-align: middle;"/>${name}</label>`;
+return;
+}
+document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: clamp(15px, 3vw, 23px);">${name}</label>`;
 });
 </script>
 </body>
