@@ -85,7 +85,7 @@ margin-top: -10px;
 }
 main {
 background-image: linear-gradient(90deg, #111111, #690004);
-height: max-content;
+height: auto;
 border: 6px double;
 border-color: rgb(0, 0, 0) firebrick rgb(250, 250, 250);
 border-radius: 20px;
@@ -237,11 +237,11 @@ main {display: flex;}
 100% {background-position: right;}
 }
 @keyframes text-shadows-animate {
-0% {text-shadow: 2px 2px 6px yellow, -2px -2px 6px blue;}
-25% {text-shadow: 0px 0px 6px yellow, 0px -1px 6px blue;}
-50% {text-shadow: 3px 2px 6px yellow, -1px -3px 6px blue;}
-75% {text-shadow: 1px 0px 6px yellow, -3px 0px 6px blue;}
-100% {text-shadow: 2px 3px 6px yellow, -2px -2px 6px blue;}
+0% {text-shadow: 2px 2px 15px yellow, -2px -2px 10px blue;}
+25% {text-shadow: 0px 0px 15px yellow, 0px -1px 10px blue;}
+50% {text-shadow: 3px 2px 15px yellow, -1px -3px 10px blue;}
+75% {text-shadow: 1px 0px 15px yellow, -3px 0px 10px blue;}
+100% {text-shadow: 2px 3px 15px yellow, -2px -2px 10px blue;}
 }
 @keyframes translate-animate {
 0% {transform: translate(-2px, 2px);}
@@ -273,8 +273,11 @@ cursor: pointer;
 </center>
 </div>
 <div class="text-part">
-<center><h1>Some headline</h1></center>
-<p>Some paragraph</p>
+<p style="font-size: clamp(12px, 5vw, 26px);">
+Athlomax is strictly a fictional copmpany created solely for a school project in our Technology subject.
+<s>It is not a real</s> <br><br>
+<center><span style="font-size: 200%; color: lightblue;">No shit we forgot to finish it...</span></center>
+</p>
 </div>
 </main>
 <script>
@@ -297,14 +300,18 @@ nicknames.forEach((name, index) => {
 index++;
 console.log(index);
 if (index == 1) {
-document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: clamp(15px, 3vw, 23px); padding: 2px 4px 2px 4px; background: linear-gradient(90deg, rgb(150, 20, 150) 15%, lime 60%, rgb(150, 20, 150) 0%); background-size: 550%; animation: text-animate-left-right 2s linear infinite; background-clip: text; color: transparent; text-shadow: 2px 2px 6px purple, -2px -2px 6px lime;">${name}</label>`;
+document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: clamp(20px, 3vw, 28px); padding: 2px 4px 2px 4px;"><img src="https://media.tenor.com/EzVyUUOx2jsAAAAM/gyros-steel-ball-gyro-zeppeli.gif" style="width: clamp(20px, 1.5vw, 26px); margin-right: 5px; border-radius: 50%; border: groove 4px; border-color: purple green green purple; vertical-align: middle;"/><span style="vertical-align: middle; background: linear-gradient(90deg, lime 15%, purple 60%, lime 0%); background-size: 550%; animation: text-animate-left-right 2s linear infinite; background-clip: text; color: transparent;">${name}</span></label>`;
 return;
 }
 if (index == 2) {
-document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: clamp(15px, 3vw, 23px); padding: 2px 4px 2px 4px; background: linear-gradient(90deg, yellow 15%, blue 60%, yellow 0%); background-size: 550%; animation: text-animate-left-right 2s linear infinite 0.1s, text-shadows-animate 1.2s linear infinite, translate-animate 1s linear infinite; background-clip: text; color: transparent; text-shadow: 2px 2px 6px yellow, -2px -2px 6px blue;"><img src="https://yt3.ggpht.com/QYjzY8r2AUzZ5Vrw2FyYmlTG-PL4xGp7nc8tHBcecJKZajd4KqHHPRGj0m6-9tMVvomLNbpIU90=s176-c-k-c0x00ffffff-no-rj-mo" style="width: clamp(14px, 0.85vw, 18px); margin-right: 10px; border-radius: 50%; border: groove white 4px; vertical-align: middle;"/>${name}</label>`;
+document.querySelector(".names-div").innerHTML += `<a href="https://youtube.com/@winxprt/" target="_blank" style="color: white; text-decoration: none; width: max-content; display: block;"><label style="cursor: pointer; display: block; width: max-content; font-size: clamp(20px, 3vw, 28px); padding: 2px 4px 2px 4px;"><img src="https://yt3.ggpht.com/QYjzY8r2AUzZ5Vrw2FyYmlTG-PL4xGp7nc8tHBcecJKZajd4KqHHPRGj0m6-9tMVvomLNbpIU90=s176-c-k-c0x00ffffff-no-rj-mo" style="width: clamp(18px, 1.3vw, 24px); margin-right: 5px; border-radius: 50%; border: groove white 4px; vertical-align: middle;"/><span style="vertical-align: middle; background: linear-gradient(90deg, yellow 5%, blue 35%, yellow 60%); background-size: 550%; animation: text-animate-left-right 1.65s linear infinite reverse 0.2s, text-shadows-animate 1.2s linear infinite, translate-animate 1s linear infinite; background-clip: text; color: transparent; text-shadow: 2px 2px 15px yellow, -2px -2px 15px blue;">${name}</span></label></a>`;
 return;
 }
-document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: clamp(15px, 3vw, 23px);">${name}</label>`;
+if (index == 5) {
+document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: clamp(20px, 3vw, 28px);"><span style="vertical-align: middle; background: linear-gradient(225deg, rgb(250, 250, 250) 30%, rgb(220, 70, 50) 55%, rgb(250, 250, 250) 70%); background-clip: text; color: transparent; background-size: 550%; animation: text-animate-left-right 2s linear infinite 0.155s;">${name}</span></label>`;
+return;
+}
+document.querySelector(".names-div").innerHTML += `<label style="display: block; width: max-content; font-size: clamp(20px, 3vw, 28px);">${name}</label>`;
 });
 </script>
 </body>
